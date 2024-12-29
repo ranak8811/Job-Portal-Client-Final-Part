@@ -8,7 +8,7 @@ const useJobs = (sort, search, minSalary, maxSalary) => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:4000/jobs?sort=${sort}&search=${search}&min=${minSalary}&max=${maxSalary}`
+        `https://job-portal-server-for-recruiter-part3-liart.vercel.app/jobs?sort=${sort}&search=${search}&min=${minSalary}&max=${maxSalary}`
       )
       .then((res) => {
         setJobs(res.data);

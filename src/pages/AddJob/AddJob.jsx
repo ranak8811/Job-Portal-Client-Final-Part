@@ -18,13 +18,16 @@ const AddJob = () => {
     newJob.responsibilities = newJob.responsibilities.split("\n");
     console.log(newJob);
 
-    fetch("http://localhost:4000/jobs", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newJob),
-    })
+    fetch(
+      "https://job-portal-server-for-recruiter-part3-liart.vercel.app/jobs",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newJob),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
