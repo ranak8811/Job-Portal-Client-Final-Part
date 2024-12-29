@@ -10,12 +10,12 @@ const MyApplications = () => {
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    // fetch(`https://job-portal-server-for-recruiter-part3-liart.vercel.app/job-application?email=${user.email}`)
+    // fetch(`http://localhost:4000/job-application?email=${user.email}`)
     //   .then((res) => res.json())
     //   .then((data) => setJobs(data));
 
     // axios
-    //   .get(`https://job-portal-server-for-recruiter-part3-liart.vercel.app/job-application?email=${user.email}`, {
+    //   .get(`http://localhost:4000/job-application?email=${user.email}`, {
     //     withCredentials: true,
     //   })
     //   .then((res) => {

@@ -7,9 +7,7 @@ const MyPostedJobs = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(
-      `https://job-portal-server-for-recruiter-part3-liart.vercel.app/jobs?email=${user.email}`
-    )
+    fetch(`http://localhost:4000/jobs?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, [user.email]);

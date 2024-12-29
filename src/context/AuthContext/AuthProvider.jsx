@@ -46,11 +46,7 @@ const AuthProvider = ({ children }) => {
         const user = { email: currentUser.email };
 
         axios
-          .post(
-            `https://job-portal-server-for-recruiter-part3-liart.vercel.app/jwt`,
-            user,
-            { withCredentials: true }
-          )
+          .post(`http://localhost:4000/jwt`, user, { withCredentials: true })
           .then((res) => {
             console.log("Login token: ", res.data);
             setLoading(false);
@@ -58,7 +54,7 @@ const AuthProvider = ({ children }) => {
       } else {
         axios
           .post(
-            `https://job-portal-server-for-recruiter-part3-liart.vercel.app/logout`,
+            `http://localhost:4000/logout`,
             {},
             {
               withCredentials: true,

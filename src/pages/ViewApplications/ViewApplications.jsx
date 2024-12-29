@@ -10,16 +10,13 @@ const ViewApplications = () => {
     const data = {
       status: e.target.value,
     };
-    fetch(
-      `https://job-portal-server-for-recruiter-part3-liart.vercel.app/job-applications/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch(`http://localhost:4000/job-applications/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {

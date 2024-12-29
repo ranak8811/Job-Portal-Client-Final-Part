@@ -10,6 +10,7 @@ import MyApplications from "../pages/MyApplications/MyApplications";
 import AddJob from "../pages/AddJob/AddJob";
 import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../pages/ViewApplications/ViewApplications";
+import AllJobs from "../pages/AllJobs/AllJobs";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/allJobs",
+        element: <AllJobs></AllJobs>,
+      },
+      {
         path: "jobs/:id",
         element: (
           <PrivateRoute>
@@ -29,9 +34,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://job-portal-server-for-recruiter-part3-liart.vercel.app/jobs/${params.id}`
-          ),
+          fetch(`http://localhost:4000/jobs/${params.id}`),
       },
       {
         path: "jobApply/:id",
@@ -73,9 +76,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://job-portal-server-for-recruiter-part3-liart.vercel.app/job-applications/jobs/${params.job_id}`
-          ),
+          fetch(`http://localhost:4000/job-applications/jobs/${params.job_id}`),
       },
       {
         path: "register",

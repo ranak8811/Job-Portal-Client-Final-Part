@@ -13,21 +13,18 @@ const AddJob = () => {
     // console.log(initialData)
     const { min, max, currency, ...newJob } = initialData;
     console.log(min, max, currency, newJob);
-    newJob.salaryRange = { min, max, currency };
+    newJob.salaryRange = { min: parseInt(min), max: parseInt(max), currency };
     newJob.requirements = newJob.requirements.split("\n");
     newJob.responsibilities = newJob.responsibilities.split("\n");
     console.log(newJob);
 
-    fetch(
-      "https://job-portal-server-for-recruiter-part3-liart.vercel.app/jobs",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newJob),
-      }
-    )
+    fetch("http://localhost:4000/jobs", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newJob),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
@@ -111,7 +108,7 @@ const AddJob = () => {
               <span className="label-text">Salary Range</span>
             </label>
             <input
-              type="text"
+              type="number"
               name="min"
               placeholder="Min"
               className="input input-bordered"
@@ -120,7 +117,7 @@ const AddJob = () => {
           </div>
           <div className="form-control">
             <input
-              type="text"
+              type="number"
               name="max"
               placeholder="Max "
               className="input input-bordered"
@@ -209,6 +206,7 @@ const AddJob = () => {
             <span className="label-text">HR Email</span>
           </label>
           <input
+            readOnly
             type="text"
             defaultValue={user?.email}
             name="hr_email"
